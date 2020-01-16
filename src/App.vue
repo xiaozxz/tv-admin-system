@@ -1,32 +1,54 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="system-aside">
+      <h5 class="aside-title">目录</h5>
+      <Menu :menus="menus"></Menu>
     </div>
-    <router-view />
+    <div class="system-body">
+      <router-view :key="$route.fullPath" />
+    </div>
   </div>
 </template>
-
-<style lang="less">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+import Menu from '@/components/Menu.vue'
+export default {
+  name: 'App',
+  components: { Menu },
+  data() {
+    return {
+      menus: [
+        {
+          name: '首页',
+          icon: 'el-icon-s-home',
+          path: '/',
+          needReset: true
+        },
+        {
+          name: '表单',
+          icon: 'el-icon-edit-outline',
+          path: 'form',
+          children: [
+            {
+              path: '/form/normal',
+              name: '普通表单'
+            }
+          ]
+        },
+        {
+          name: '表格',
+          icon: 'el-icon-menu',
+          path: 'table',
+          children: [
+            {
+              path: '/table/normal',
+              name: '普通表格'
+            }
+          ]
+        }
+      ]
     }
   }
 }
-</style>
+</script>
+
+<style lang="less"></style>
