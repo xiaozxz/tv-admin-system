@@ -5,24 +5,52 @@
     </div>
     <div class="page-content">
       <TvForm :model.sync="model">
-        <TvFormItem :label="'名称'">
-          <el-input v-model="model.name"></el-input>
+        <TvFormItem :label="'字段'">
+          <el-input v-model="model.filed"></el-input>
         </TvFormItem>
         <TvFormItem
-          :props="'desc'"
-          :label="'描述'"
+          :props="'filedDesc'"
+          :label="'字段描述'"
           :control="{ type: 'input' }"
         ></TvFormItem>
+        <TvFormItem
+          :props="['workStart', 'workEnd']"
+          :label="'工作日期'"
+          :control="{
+            type: 'datePicker',
+            controlOption: { type: 'daterange' }
+          }"
+        ></TvFormItem>
+        <div class="item">
+          <div class="item-header">其他</div>
+          <div>
+            <TvFormItems :fieldOptions="files"></TvFormItems>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-header">
+            分组
+            <el-button @click="addRow" type="primary">新增</el-button>
+          </div>
+          <div class="row" v-for="(item, index) in model.list" :key="index">
+            <TvFormItem
+              v-for="(option, optionIndex) in files"
+              :position="['list', index, option.props]"
+              v-bind="option"
+              :key="optionIndex"
+            ></TvFormItem>
+          </div>
+        </div>
       </TvForm>
     </div>
     <div>{{ model }}</div>
   </div>
 </template>
 <script>
-import { TvForm, TvFormItem } from 'tv-admin-ui/components'
+import { TvForm, TvFormItems, TvFormItem } from 'tv-admin-ui/components'
 export default {
   name: '',
-  components: { TvForm, TvFormItem },
+  components: { TvForm, TvFormItems, TvFormItem },
   data() {
     let files = Object.seal([
       {
@@ -47,33 +75,19 @@ export default {
           type: 'datePicker',
           controlOption: { type: 'daterange' }
         }
-      },
-      {
-        props: 'list',
-        label: '集合',
-        controls: [
-          {
-            props: 'desc',
-            label: '描述字段1',
-            control: {
-              type: 'input',
-              controlOption: { placeholder: '值为1电话显示消失' }
-            }
-          },
-          {
-            props: 'number',
-            label: '总数',
-            control: {
-              type: 'number'
-            }
-          }
-        ]
       }
     ])
     return {
       mode: 'inline',
-      model: {},
+      model: {
+        list: [{}]
+      },
       files
+    }
+  },
+  methods: {
+    addRow() {
+      this.model.list.push({})
     }
   }
 }
