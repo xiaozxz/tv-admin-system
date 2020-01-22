@@ -31,6 +31,10 @@ export default {
             {
               path: '/form/normal',
               name: '普通表单'
+            },
+            {
+              path: '/form/element',
+              name: '类似element写法'
             }
           ]
         },

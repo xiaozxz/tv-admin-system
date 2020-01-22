@@ -12,7 +12,12 @@ const routes = [
   {
     path: '/form/normal',
     name: 'NoralForm',
-    component: () => import('../views/Form/index.vue')
+    component: () => import('../views/Form/Normal.vue')
+  },
+  {
+    path: '/form/element',
+    name: 'Element',
+    component: () => import('../views/Form/ElementForm.vue')
   },
   {
     path: '/table/normal',

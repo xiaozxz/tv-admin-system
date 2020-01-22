@@ -1,6 +1,6 @@
 <template>
   <div class="home-page">
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
     <div>欢迎来到tv-admin-system</div>
   </div>
 </template>
