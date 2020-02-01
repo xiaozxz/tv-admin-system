@@ -11,13 +11,13 @@
         <TvFormItem
           :props="'filedDesc'"
           :label="'字段描述'"
-          :control="{ type: 'input' }"
+          :control="{ type: 'el-input' }"
         ></TvFormItem>
         <TvFormItem
           :props="['workStart', 'workEnd']"
           :label="'工作日期'"
           :control="{
-            type: 'datePicker',
+            type: 'el-datePicker',
             controlOption: { type: 'daterange' }
           }"
         ></TvFormItem>
@@ -47,7 +47,12 @@
   </div>
 </template>
 <script>
-import { TvForm, TvFormItems, TvFormItem } from 'tv-admin-ui/components'
+import {
+  TvForm,
+  TvFormItems,
+  createControl,
+  TvFormItem
+} from 'tv-admin-ui/components'
 export default {
   name: '',
   components: { TvForm, TvFormItems, TvFormItem },
@@ -56,25 +61,19 @@ export default {
       {
         props: 'name',
         label: '名称',
-        control: {
-          type: 'input'
-        }
+        control: createControl.createInput()
       },
       {
         props: 'desc',
         label: '描述',
-        control: {
-          type: 'input',
-          controlOptions: { placeholder: '值为1电话显示消失' }
-        }
+        control: createControl.createInput()
       },
       {
         props: ['start', 'end'],
         label: '日期',
-        control: {
-          type: 'datePicker',
+        control: createControl.createDatePicker({
           controlOption: { type: 'daterange' }
-        }
+        })
       }
     ])
     return {

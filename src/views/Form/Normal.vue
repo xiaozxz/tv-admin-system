@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-import { TvForm } from 'tv-admin-ui/components'
+import { TvForm, createControl } from 'tv-admin-ui/components'
 export default {
   name: '',
   components: { TvForm },
@@ -25,26 +25,55 @@ export default {
         props: 'name',
         label: '名称',
         rules: [{ required: true }],
-        control: {
-          type: 'input',
-          controlOption: { placeholder: '这是是个测试' }
-        }
+        control: createControl.createInput()
       },
       {
         props: 'desc',
         label: '描述',
-        control: {
-          type: 'input',
-          controlOptions: { placeholder: '值为1电话显示消失' }
-        }
+        control: createControl.createInput()
+      },
+      {
+        props: 'select',
+        label: '下拉框',
+        control: createControl.createSelect({
+          controlOption: {
+            options: [
+              { label: '数据1', value: '这是值1' },
+              { label: '数据1', value: '这是值2' }
+            ]
+          }
+        })
+      },
+      {
+        props: 'radio',
+        label: '单选框',
+        control: createControl.createRadio({
+          controlOption: {
+            options: [
+              { label: '数据1', value: '这是值1' },
+              { label: '数据1', value: '这是值2' }
+            ]
+          }
+        })
+      },
+      {
+        props: 'checkbox',
+        label: '多选框',
+        control: createControl.createCheckbox({
+          controlOption: {
+            options: [
+              { label: '数据1', value: '这是值1' },
+              { label: '数据1', value: '这是值2' }
+            ]
+          }
+        })
       },
       {
         props: ['start', 'end'],
         label: '日期',
-        control: {
-          type: 'datePicker',
+        control: createControl.createDatePicker({
           controlOption: { type: 'daterange' }
-        }
+        })
       },
       {
         props: 'list',
@@ -53,17 +82,12 @@ export default {
           {
             props: 'desc',
             label: '描述字段1',
-            control: {
-              type: 'input',
-              controlOption: { placeholder: '值为1电话显示消失' }
-            }
+            control: createControl.createInput()
           },
           {
             props: 'number',
             label: '总数',
-            control: {
-              type: 'number'
-            }
+            control: createControl.createNumber()
           }
         ]
       }
