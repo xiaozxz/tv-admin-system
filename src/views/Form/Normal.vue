@@ -1,10 +1,15 @@
 <template>
-  <div class="page form-page">
+  <div class="page form-page form-inline-page ">
     <div class="page-header">
       <h3>这是普通form</h3>
     </div>
     <div class="page-content">
-      <TvForm :model.sync="model" :fieldOptions="files"></TvForm>
+      <TvForm
+        :model.sync="model"
+        @formSubmit="formSubmit"
+        :fieldOptions="files"
+        :mode="mode"
+      ></TvForm>
     </div>
     <div>{{ model }}</div>
   </div>
@@ -19,8 +24,10 @@ export default {
       {
         props: 'name',
         label: '名称',
+        rules: [{ required: true }],
         control: {
-          type: 'input'
+          type: 'input',
+          controlOption: { placeholder: '这是是个测试' }
         }
       },
       {
@@ -42,7 +49,7 @@ export default {
       {
         props: 'list',
         label: '集合',
-        controls: [
+        fields: [
           {
             props: 'desc',
             label: '描述字段1',
@@ -63,14 +70,21 @@ export default {
     ])
     return {
       mode: 'inline',
+      // eslint-disable-next-line vue/no-reserved-keys
+      _test: '1233',
       model: {},
       files
+    }
+  },
+  methods: {
+    formSubmit(params) {
+      console.info(this.model)
     }
   }
 }
 </script>
 <style lang="less">
-.form-page {
+.form-inline-page {
   .d-form-item {
     width: 33.33%;
     margin-bottom: 20px;

@@ -1,5 +1,5 @@
 <template>
-  <div class="page form-page">
+  <div class="page form-page form-inline-page">
     <div class="page-header">
       <h3>类似element</h3>
     </div>
@@ -21,13 +21,13 @@
             controlOption: { type: 'daterange' }
           }"
         ></TvFormItem>
-        <div class="item">
+        <div class="page-section">
           <div class="item-header">其他</div>
           <div>
             <TvFormItems :fieldOptions="files"></TvFormItems>
           </div>
         </div>
-        <div class="item">
+        <div class="page-section">
           <div class="item-header">
             分组
             <el-button @click="addRow" type="primary">新增</el-button>
@@ -93,10 +93,17 @@ export default {
 }
 </script>
 <style lang="less">
-.form-page {
+.form-inline-page {
   .d-form-item {
     width: 33.33%;
     margin-bottom: 20px;
+  }
+  .page-section {
+    width: 100%;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 </style>
