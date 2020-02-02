@@ -46,6 +46,10 @@ export default {
             {
               path: '/table/normal',
               name: '普通表格'
+            },
+            {
+              path: '/table/btnTable',
+              name: '按钮表格'
             }
           ]
         }

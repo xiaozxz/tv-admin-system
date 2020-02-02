@@ -23,6 +23,11 @@ const routes = [
     path: '/table/normal',
     name: 'NoralTable',
     component: () => import('../views/Table/index.vue')
+  },
+  {
+    path: '/table/btnTable',
+    name: 'BtnTable',
+    component: () => import('../views/Table/BtnTable')
   }
   // {
   //   path: '/form',

@@ -5,7 +5,7 @@ function initData() {
     let data = {
       id: i,
       title: '标题' + i,
-      time: '2019-01-0' + i,
+      time: '2019-01-' + (i > 9 ? '' : '0') + i,
       status: 0
     }
     defaultData.push(data)
@@ -18,9 +18,9 @@ initData()
 export const list = defaultData
 
 export function getTestData(params) {
-  let number = params['page.pn'] - 1
-  let size = params['page.size']
-  let content = defaultData.slice(number * size, params['page.pn'] * size)
+  let number = params.page - 1
+  let size = params.size
+  let content = defaultData.slice(number * size, params['page'] * size)
 
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -33,16 +33,6 @@ export function getTestData(params) {
         }
       })
     }, 100)
-  })
-}
-
-export function ajaxService() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({
-        content: true
-      })
-    }, 2000)
   })
 }
 
