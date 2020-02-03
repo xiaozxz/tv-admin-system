@@ -37,6 +37,7 @@ export function getTestData(params) {
 }
 
 export function updateService(model) {
+  debugger
   let index = defaultData.findIndex(item => item.id == model.id)
   if (index > -1) {
     let item = defaultData[index]

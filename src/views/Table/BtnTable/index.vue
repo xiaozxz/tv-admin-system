@@ -8,21 +8,39 @@
         :columns="columns"
         :pageOption="pageOption"
         :data="tableData"
+        :pageInfo="tableSearch"
+        @changeTableSearch="tableSearchData"
+        @changeModal="changeModal"
+        @changeLoading="changeLoading"
+        @submitCancelDo="submitCancelDo"
       ></TvTable>
+      <TvFormModal
+        v-bind="modal.formModal"
+        :submintloading="loading.all"
+        @close="closeModal"
+        @submitCancelDo="submitCancelDo"
+      ></TvFormModal>
+      <SelfModal
+        v-bind="modal.SelfModal"
+        :submintloading="loading.all"
+        @close="closeModal"
+        @submitCancelDo="submitCancelDo"
+      ></SelfModal>
     </div>
   </div>
 </template>
 <script>
-import { TvFilterForm, createControl, TvTable } from 'tv-admin-ui/components'
+import { TvFormModal, createControl, TvTable } from 'tv-admin-ui/components'
 import { getTestData, updateService, list } from '@/util/testdata'
+import SelfModal from './SelfModal.vue'
 
 export default {
   name: '',
-  components: { TvTable },
+  components: { TvTable, TvFormModal, SelfModal },
   data() {
-    let fields = Object.freeze([
+    let fields = Object.seal([
       {
-        formKey: 'title',
+        props: 'title',
         label: '标题',
         class: 'form-a-item',
         rules: [{ required: true }],
@@ -33,7 +51,7 @@ export default {
         }
       },
       {
-        formKey: 'time',
+        props: 'time',
         label: '时间',
         control: createControl.createDatePicker()
       }
@@ -78,7 +96,11 @@ export default {
                   `您是否要${model.status == 0 ? '启用' : '禁用'}该数据`
               },
               submit: {
-                loadingKey: 'all',
+                params: modal => {
+                  modal.status = modal.status == 0 ? 1 : 0
+                  debugger
+                  return modal
+                },
                 service: updateService
               }
             })
@@ -103,16 +125,20 @@ export default {
             title: '自定义弹出框',
             action: Object.freeze({
               type: 'selfModal',
-              selfModal: 'SelfModal'
+              options: {
+                selfModal: 'SelfModal'
+              }
             })
           }
         ]
       }
     ]
     return {
+      loading: { all: false },
       columns: Object.freeze(columns),
       getPageDataService: getTestData,
       tableData: [],
+      tableSearch: { page: 1, size: 5, total: 20 },
       search: {
         tableSearch: { page: 1, size: 5, total: 20 },
         filter: {
@@ -120,7 +146,10 @@ export default {
           desc: '这是一个新的描述'
         }
       },
-
+      modal: {
+        formModal: { visible: false }
+        // SelfModal: { visible: true,modal:{name:1},action:{} },
+      },
       pageOption: Object.freeze({
         sizes: [5, 10, 15, 20],
         layout: 'prev, pager, next, sizes, jumper'
@@ -128,15 +157,45 @@ export default {
     }
   },
   mounted() {
-    this.tableData = list.slice(1, 10)
+    this.tableSearchData()
   },
   methods: {
-    // getData() {
-    //   this.getPageDataService.then(res => {
-    //     debugger
-    //     this.tableData = res.data
-    //   })
-    // }
+    tableSearchData({ tableSearch } = {}) {
+      if (tableSearch) {
+        this.tableSearch = tableSearch
+      }
+
+      getTestData(this.tableSearch).then(reponse => {
+        let { number = 0, size, totalElements = 0, content } = reponse.content
+        this.tableData = content
+        this.tableSearch = {
+          page: number + 1,
+          size,
+          total: totalElements
+        }
+      })
+    },
+
+    submitCancelDo({ ajaxId, response }) {
+      this.tableSearchData()
+    },
+
+    changeLoading({ ajaxId, loadingKey, status }) {
+      this.$set(this.loading, loadingKey, status)
+    },
+
+    changeModal({ visible, model, action, modalKey }) {
+      console.info({ visible, model, action, modalKey })
+      this.$set(this.modal, modalKey, {
+        visible,
+        model,
+        action
+      })
+    },
+
+    closeModal(type) {
+      this.modal[type] = { visible: false }
+    }
   }
 }
 </script>

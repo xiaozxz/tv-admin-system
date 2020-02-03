@@ -17,6 +17,7 @@
           :is="node.selfTag || 'TVTableBtn'"
           :loading="loading.all"
           :nodeInfo="node"
+          :model="node.modelKeys ? getPageBtnModel(node.modelKeys) : ''"
           @changePopup="changeModal"
           @submitCancelDo="submitCancelDo"
           @changeLoading="changeLoading"
@@ -38,13 +39,13 @@
         @submitCancelDo="submitCancelDo"
       ></TvTable>
     </div>
-    <FormModal
+    <TvFormModal
       v-bind="modal.formModal"
       :submintloading="loading.all"
       @close="closeModal"
       @submitCancelDo="submitCancelDo"
     >
-    </FormModal>
+    </TvFormModal>
     <component
       v-for="key in selfModalKeys"
       :key="key"
@@ -82,6 +83,16 @@ export default {
         sizes: [5, 10, 15, 20],
         layout: 'prev, pager, next, sizes, jumper'
       })
+    }
+  },
+  computed: {
+    getPageBtnModel: keys => {
+      let modelKeys = typeof keys == 'string' ? [keys] : keys
+      let model = {}
+      keys.forEach(key => {
+        model[key] = this[key]
+      })
+      return model
     }
   },
   created() {

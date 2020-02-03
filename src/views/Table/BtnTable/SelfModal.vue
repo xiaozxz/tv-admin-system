@@ -87,8 +87,10 @@ export default {
       if (this.isSubmit) {
         return false
       }
-      let key = this.action.selfModal || 'formModal'
-      this.$emit('close', key)
+      if (this.action && this.action.options) {
+        let key = this.action.options.selfModal
+        this.$emit('close', key)
+      }
     }
   }
 }
