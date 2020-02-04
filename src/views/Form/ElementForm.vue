@@ -47,12 +47,7 @@
   </div>
 </template>
 <script>
-import {
-  TvForm,
-  TvFormItems,
-  createControl,
-  TvFormItem
-} from 'tv-admin-ui/components'
+import { TvForm, TvFormItems, createControl, TvFormItem } from 'tv-admin-ui'
 export default {
   name: '',
   components: { TvForm, TvFormItems, TvFormItem },

@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-import { TvFilterForm, TvTable } from 'tv-admin-ui/components'
+import { TvFilterForm, TvTable } from 'tv-admin-ui'
 import { getTestData } from '@/util/testdata'
 
 export default {

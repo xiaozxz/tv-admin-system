@@ -30,15 +30,15 @@
   </div>
 </template>
 <script>
-import { TvFormModal, createControl, TvTable } from 'tv-admin-ui/components'
+import { TvFormModal, createControl, TvTable } from 'tv-admin-ui'
 import { getTestData, updateService, list } from '@/util/testdata'
-import SelfModal from './SelfModal.vue'
+import SelfModal from './component/SelfModal'
 
 export default {
   name: '',
   components: { TvTable, TvFormModal, SelfModal },
   data() {
-    let fields = Object.seal([
+    let fields = [
       {
         props: 'title',
         label: '标题',
@@ -55,7 +55,7 @@ export default {
         label: '时间',
         control: createControl.createDatePicker()
       }
-    ])
+    ]
     const columns = [
       { label: '序号', type: 'index', width: '60', align: 'center' },
       { prop: 'title', label: '标题', align: 'center' },
@@ -98,7 +98,6 @@ export default {
               submit: {
                 params: modal => {
                   modal.status = modal.status == 0 ? 1 : 0
-                  debugger
                   return modal
                 },
                 service: updateService
@@ -110,6 +109,10 @@ export default {
             action: Object.freeze({
               type: 'normal',
               submit: {
+                params: modal => {
+                  modal.status = modal.status == 0 ? 1 : 0
+                  return modal
+                },
                 service: updateService
               }
             })

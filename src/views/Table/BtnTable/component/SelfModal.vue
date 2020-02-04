@@ -19,8 +19,6 @@
   </el-dialog>
 </template>
 <script>
-// import TVForm from '../DForm/src/Form';
-// import { handleParams } from '../util';
 export default {
   name: 'SelfModal',
   // components: { TVForm },
