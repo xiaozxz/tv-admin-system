@@ -52,6 +52,17 @@ export default {
               name: '按钮表格'
             }
           ]
+        },
+        {
+          name: '页面',
+          icon: 'el-icon-menu',
+          path: 'page',
+          children: [
+            {
+              path: '/page/normal',
+              name: '普通检索页面'
+            }
+          ]
         }
       ]
     }

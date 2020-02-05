@@ -1,1 +1,2 @@
-export { default as TvTable } from './TvTable/index.vue'
+export { default as NormalPageTable } from './NormalTable';
+

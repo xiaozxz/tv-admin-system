@@ -36,8 +36,26 @@ export function getTestData(params) {
   })
 }
 
+export function getData(params) {
+  let number = params['page.pn'] - 1
+  let size = params['page.size']
+  let content = defaultData.slice(number * size, params['page.pn'] * size)
+
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({
+        content: {
+          content,
+          number,
+          size,
+          totalElements: defaultData.length
+        }
+      })
+    }, 100)
+  })
+}
+
 export function updateService(model) {
-  debugger
   let index = defaultData.findIndex(item => item.id == model.id)
   if (index > -1) {
     let item = defaultData[index]

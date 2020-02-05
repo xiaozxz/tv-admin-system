@@ -28,6 +28,11 @@ const routes = [
     path: '/table/btnTable',
     name: 'BtnTable',
     component: () => import('../views/Table/BtnTable')
+  },
+  {
+    path: '/page/normal',
+    name: 'PageNormal',
+    component: () => import('../views/page/search.vue')
   }
   // {
   //   path: '/form',

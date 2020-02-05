@@ -63,8 +63,28 @@ export default {
       {
         prop: 'status',
         label: '状态',
-        columnType: 'TranlateColumn',
-        translate: { 0: '禁用', 1: '启用' }
+        columnType: 'ListColumn',
+        children: [
+          {
+            icon: model =>
+              model.status == 0 ? 'el-icon-plus' : 'el-icon-minus',
+            action: Object.freeze({
+              type: 'confirm',
+              confirm: {
+                title: '提示',
+                content: model =>
+                  `您是否要${model.status == 0 ? '启用' : '禁用'}该数据`
+              },
+              submit: {
+                params: modal => {
+                  modal.status = modal.status == 0 ? 1 : 0
+                  return modal
+                },
+                service: updateService
+              }
+            })
+          }
+        ]
       },
       {
         prop: 'operate',

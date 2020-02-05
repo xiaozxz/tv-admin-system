@@ -1,12 +1,12 @@
 <template>
-  <div class="table-page">
-    <div class="page-header">普通列表页面</div>
+  <div class="page table-page">
+    <div class="page-header">{{ pageTitle }}</div>
     <div class="page-filter">
       <TvFilterForm
-        v-if="$data.filterFiledOptions"
+        v-if="$data.pageFilter"
         :filter="search.filter"
         :loading="loading.all"
-        :fieldOptions="filterFiledOptions"
+        :fieldOptions="pageFilter"
       ></TvFilterForm>
     </div>
     <div class="page-content">
@@ -14,7 +14,7 @@
         <!-- <el-button type="primary" size="small">新增</el-button> -->
         <TvTableBtn
           v-for="(node, index) in pageBtns"
-          :is="node.selfTag || 'TVTableBtn'"
+          :is="node.selfTag || 'TvTableBtn'"
           :loading="loading.all"
           :nodeInfo="node"
           :model="node.modelKeys ? getPageBtnModel(node.modelKeys) : ''"
@@ -26,26 +26,28 @@
       </div>
       <TvTable
         :loading="loading.all"
-        :columns="columns"
+        :columns="tableColumns"
         :tableOption="tableOption || {}"
-        :data="content"
+        :data="tableData"
+        :selectRows.sync="selectRows"
         :pageOption="pageOption"
         :pageInfo="search.tableSearch"
         :tableSearch="search.tableSearch"
-        :expandOption="expandOption"
+        :expandOption="tableExpandOption"
+        :clearSelect="clearSelect"
         @changePopup="changeModal"
         @changeLoading="changeLoading"
         @changeTableSearch="changeSearch"
         @submitCancelDo="submitCancelDo"
       ></TvTable>
     </div>
+    <div>{{ selectRows }}</div>
     <TvFormModal
       v-bind="modal.formModal"
       :submintloading="loading.all"
       @close="closeModal"
       @submitCancelDo="submitCancelDo"
-    >
-    </TvFormModal>
+    ></TvFormModal>
     <component
       v-for="key in selfModalKeys"
       :key="key"
@@ -59,14 +61,15 @@
 </template>
 
 <script>
-import { TVTable, FormModal, TVSearchForm, TVTableBtn } from 'tv-admin-ui'
+import { TvFilterForm, TvTable, TvFormModal, TvTableBtn } from 'tv-admin-ui'
 import { handleSearchParams, handlePageDataRes } from './method'
 import _ from 'lodash'
 export default {
   name: 'NormalTablePage',
-  components: { TVTable, FormModal, TVSearchForm, TVTableBtn },
+  components: { TvFilterForm, TvTableBtn, TvTable, TvFormModal },
   data() {
     return {
+      pageTitle: '',
       loading: { all: false },
       modal: {
         formModal: { visible: false }
@@ -76,9 +79,12 @@ export default {
         tableSearch: { page: 1, size: 5, total: 0 },
         filter: {}
       },
+      tableOption: { border: true },
       selfModalKeys: [],
-      expandOption: null,
-      content: [],
+      selectRows: null,
+      clearSelect: true,
+      tableExpandOption: null,
+      tableData: [],
       pageOption: Object.freeze({
         sizes: [5, 10, 15, 20],
         layout: 'prev, pager, next, sizes, jumper'
@@ -97,6 +103,7 @@ export default {
   },
   created() {
     this._defaultTableSearch = _.cloneDeep(this.search.tableSearch)
+    this.changeSearch()
   },
   methods: {
     changeSearch({ tableSearch, filterSearch } = {}) {
@@ -139,7 +146,8 @@ export default {
               )
               this.getPageData(searchParams)
             }
-            this.content = responseDetail.content || []
+
+            this.tableData = responseDetail.content || []
             let { page, size, total } = responseDetail
             this.search.tableSearch = { page, size, total }
           }
@@ -158,7 +166,6 @@ export default {
     },
 
     changeModal({ visible, model, action, modalKey }) {
-      console.info({ visible, model, action, modalKey })
       this.$set(this.modal, modalKey, {
         visible,
         model,
@@ -172,16 +179,3 @@ export default {
   }
 }
 </script>
-<style lang="less">
-.table-page {
-  .search-from {
-    .d-from-op {
-      justify-content: flex-end;
-      flex: 1 0 auto;
-    }
-  }
-  .table-op {
-    margin-bottom: 20px;
-  }
-}
-</style>
