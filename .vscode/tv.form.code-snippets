@@ -1,0 +1,82 @@
+
+{
+    "TvForm":{
+        "scope": "javascript, typescript, vue",
+        "prefix": "TvForm",
+        "body": [
+            "TvForm",
+        ],
+        "description": "TvForm"
+    },
+    "tvform":{
+        "scope": "javascript, typescript, vue",
+        "prefix": "tv-form",
+        "body": [
+            "<tv-form",
+            "    ref='form'",
+            "    :formClass=''",
+            "    :model.sync=''",
+            "    @formSubmit=''",
+            "    :fieldOptions=''",
+            "    :mode=''",
+            "></tv-form>",
+        ],
+        "description": "tv-form"
+    },
+    "TvFormItem":{
+        "scope": "javascript, typescript, vue",
+        "prefix": "TvFormItem",
+        "body": [
+            "TvFormItem",
+        ],
+        "description": "TvFormItemt"
+    },
+    "tvformitem":{
+        "scope": "javascript, typescript, vue",
+        "prefix": "tv-form-item",
+        "body": [
+            "<tv-form-item",
+            "   :props=''",
+            "   :label=''",
+            "   :control=''",
+            "></tv-form-item>",
+        ],
+        "description": "tv-form-item"
+    },
+    "TvFormItems":{
+        "scope": "javascript, typescript, vue",
+        "prefix": "TvFormItems",
+        "body": [
+            "TvFormItems",
+        ],
+        "description": "TvFormItemts"
+    },
+    "tvformitems":{
+        "scope": "javascript, typescript, vue",
+        "prefix": "tv-form-items",
+        "body": [
+            "<tv-form-items :fieldOptions=''></tv-form-items>"
+        ],
+        "description": "tv-form-items"
+    },
+    "TvFilterForm":{
+        "scope": "javascript, typescript, vue",
+        "prefix": "TvFilterForm",
+        "body": [
+            "TvFilterForm"
+        ],
+        "description": "TvFilterForm"
+    },
+    "tvfilterform":{
+        "scope": "javascript, typescript, vue",
+        "prefix": "tv-filter-form",
+        "body": [
+            "<tv-filter-form",
+            "    :filter=''",
+            "    :loading=''",
+            "    :fieldOptions=''",
+            "></tv-filter-form>"
+        ],
+        "description": "tvfilterform"
+    }
+}

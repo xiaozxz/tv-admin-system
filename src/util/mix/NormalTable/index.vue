@@ -35,7 +35,7 @@
         :tableSearch="search.tableSearch"
         :expandOption="tableExpandOption"
         :clearSelect="clearSelect"
-        @changePopup="changeModal"
+        @changeModal="changeModal"
         @changeLoading="changeLoading"
         @changeTableSearch="changeSearch"
         @submitCancelDo="submitCancelDo"
@@ -166,6 +166,7 @@ export default {
     },
 
     changeModal({ visible, model, action, modalKey }) {
+      debugger
       this.$set(this.modal, modalKey, {
         visible,
         model,

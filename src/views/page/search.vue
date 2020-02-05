@@ -1,136 +1,64 @@
 <script>
-import { TvFormModal, createControl, TvTable } from 'tv-admin-ui'
+import { createControl, createColumn, createAction } from 'tv-admin-ui'
 import { getData, updateService, list } from '@/util/testdata'
 import { NormalPageTable } from '@/util/mix'
 import ExpandTag from './component/ExpandTag'
 
 export default {
-  name: 'searchPage',
+  name: 'search-page',
   mixins: [NormalPageTable],
   data() {
     let pageFilter = [
       {
         props: 'title',
         label: '标题',
-        class: 'form-a-item',
-        rules: [{ required: true }],
-        canShow: model => model.desc != '1',
-        control: createControl.createInput()
+        control: createControl.Input()
       },
       {
-        props: ['start', 'end'],
+        props: 'time',
         label: '时间',
-        control: createControl.createDatePicker({
+        control: createControl.DatePicker({
           controlOption: { type: 'daterange' }
         })
+      }
+    ]
+    let updateFields = [
+      {
+        props: 'title',
+        label: '标题',
+        control: createControl.Input()
+      },
+      {
+        props: 'time',
+        label: '时间',
+        control: createControl.DatePicker()
       }
     ]
     let pageBtns = [
       {
         title: '新增',
-        action: Object.freeze({
-          title: '修改数据',
-          modelClass: 'testClass',
-          type: 'modal',
-          fieldOptions: pageFilter,
-          submit: {
-            service: updateService
-          }
-        })
-      },
-      {
-        title: '批量删除',
-        action: Object.freeze({
-          title: '修改数据',
-          modelClass: 'testClass',
-          type: 'modal',
-          fieldOptions: pageFilter,
+        action: createAction.modal({
+          title: '新增数据',
+          fieldOptions: updateFields,
           submit: {
             service: updateService
           }
         })
       }
     ]
-    let tableBtn = [
-      {
-        title: '修改',
-        action: Object.freeze({
-          title: '修改数据',
-          modelClass: 'testClass',
-          type: 'modal',
-          fieldOptions: pageFilter,
-          submit: {
-            service: updateService
-          }
-        })
-      },
-      {
-        title: '数据',
-        action: Object.freeze({
-          type: 'expand'
-        })
-      },
 
-      {
-        title: model => (model.status == 0 ? '启用' : '禁用'),
-        action: Object.freeze({
-          type: 'confirm',
-          confirm: {
-            title: '提示',
-            content: model =>
-              `您是否要${model.status == 0 ? '启用' : '禁用'}该数据`
-          },
-          submit: {
-            params: modal => {
-              modal.status = modal.status == 0 ? 1 : 0
-              return modal
-            },
-            service: updateService
-          }
-        })
-      },
-      {
-        title: model => (model.status == 0 ? '无提示启用' : '无提示禁用'),
-        action: Object.freeze({
-          type: 'normal',
-          submit: {
-            params: modal => {
-              modal.status = modal.status == 0 ? 1 : 0
-              return modal
-            },
-            service: updateService
-          }
-        })
-      },
-      {
-        title: '查看测试',
-        action: Object.freeze({
-          type: 'goOther',
-          url: '/form'
-        })
-      },
-      {
-        title: '自定义弹出框',
-        action: Object.freeze({
-          type: 'selfModal',
-          options: {
-            selfModal: 'SelfModal'
-          }
-        })
-      }
-    ]
     let tableColumns = [
-      { label: '序号', type: 'index', width: '60', align: 'center' },
-      { prop: 'title', label: '标题', align: 'center' },
-      { prop: 'time', label: '时间' },
-      {
+      createColumn.normal({ prop: '', label: '' }),
+      createColumn.normal({ type: 'index', label: '序号' }),
+      createColumn.normal({ prop: 'title', label: '标题' }),
+      createColumn.normal({ prop: 'time', label: '时间' }),
+      createColumn.btnlist({
         prop: 'status',
         label: '状态',
-        columnType: 'ListColumn',
         children: [
           {
             icon: model =>
-              model.status == 0 ? 'el-icon-plus' : 'el-icon-minus',
+              model.status == 0 ? 'el-icon-star-off' : 'el-icon-star-on',
             action: Object.freeze({
               type: 'confirm',
               confirm: {
@@ -148,30 +76,34 @@ export default {
             })
           }
         ]
-      },
-      {
-        prop: 'operate',
+      }),
+      createColumn.btnlist({
+        prop: 'opearte',
         label: '操作',
-        columnType: 'ListColumn',
-        labelClassName: 'test',
-        btnNumber: 3,
-        children: tableBtn
-      }
+        children: [
+          {
+            title: '修改',
+            action: createAction.modal({
+              title: '',
+              fieldOptions: updateFields,
+              submit: {
+                service: updateService
+              }
+            })
+          }
+        ]
+      })
     ]
+
     return {
-      pageTitle: '普通检索页面',
+      pageTitle: '',
       pageBtns,
       pageFilter,
       tableColumns,
-      clearSelect: true,
-      selectRows: [{ id: 20 }, { id: 19 }],
-      tableExpandOption: Object.freeze({
-        isOnly: true,
-        tag: ExpandTag
-      }),
+      selectRows: [],
+      tableExpandOption: {},
       getPageDataService: getData
     }
-  },
-  methods: {}
+  }
 }
 </script>

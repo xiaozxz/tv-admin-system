@@ -1,0 +1,158 @@
+{
+    "createControl": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "cc createControl",
+        "body": [
+            "createControl"
+        ],
+        "description": "formfieldOptions"
+    },
+    ".Input()": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "cc. createControl.",
+        "body": [
+            "createControl.Input()"
+        ],
+        "description": "createControl.Input()"
+    },
+    ".Number()": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "cc. createControl.",
+        "body": [
+            "createControl.Number()"
+        ],
+        "description": "createControl.Number()"
+    },
+    ".Switch()": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "cc. createControl.",
+        "body": [
+            "createControl.Switch()"
+        ],
+        "description": "createControl.Switch()"
+    },
+    ".Select()": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "cc. createControl.",
+        "body": [
+            "createControl.Select({",
+            "   controlOption: {",
+            "       options: [",
+            "           { label: '', value: '' }",
+            "       ]",
+            "   }",
+            "})"
+        ],
+        "description": "createControl.Select()"
+    },
+    ".Checkbox()": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "cc. createControl.",
+        "body": [
+            "createControl.Checkbox({",
+            "   controlOption: {",
+            "       options: [",
+            "           { label: '', value: '' }",
+            "       ]",
+            "   }",
+            "})"
+        ],
+        "description": "createControl.Checkbox()"
+    },
+    ".Radio()": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "cc. createControl.",
+        "body": [
+            "createControl.Radio({",
+            "   controlOption: {",
+            "       options: [",
+            "           { label: '', value: '' }",
+            "       ]",
+            "   }",
+            "})"
+        ],
+        "description": "createControl.Radio()"
+    },
+    ".RadioD()": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "cc. createControl.",
+        "body": [
+            "createControl.Radio({",
+            "   controlOption: {",
+            "       options: [",
+            "           { label: '', value: '' }",
+            "       ],",
+            "       groupOption: {},",
+            "       checkboxOption: {}",
+            "   }",
+            "})"
+        ],
+        "description": "createControl.Radio() detail code"
+    },
+    ".DatePicker()": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "cc. createControl.",
+        "body": [
+            "createControl.DatePicker({",
+            "   controlOption: { type: 'daterange' }",
+            "})"
+        ],
+        "description": "createControl.DatePicker()"
+    },
+    ".TimePicker()": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "cc. createControl.",
+        "body": [
+            "createControl.TimePicker()"
+        ],
+        "description": "createControl.TimePicker()"
+    },
+    ".Text()": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "cc. createControl.",
+        "body": [
+            "createControl.Text()",
+        ],
+        "description": "createControl.Text()"
+    },
+    ".Self()": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "cc. createControl.",
+        "body": [
+            "createControl.Self()",
+        ],
+        "description": "createControl.Self()"
+    },
+    "formfieldOptions": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "fo fieldOptions",
+        "body": [
+            "{",
+            "    props: '',",
+            "    label: '',",
+            "    rules: [],",
+            "    control: {}",
+            "}",
+        ],
+        "description": "formfieldOptions"
+    },
+    "formfieldOptionsD": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "fo fieldOptions",
+        "body": [
+            "   {",
+            "       props: '',",
+            "       position:[],",
+            "       fieldClass: '',",
+            "       label: '',",
+            "       canShow: (model)=>{},",
+            "       rules: [],",
+            "       control: createControl",
+            "       fields: {}",
+            "       addOperate: ",
+            "       delOperate: ",
+            "   }"
+        ],
+        "description": "formfieldOptions detail code"
+    }
+}

@@ -1,0 +1,112 @@
+{
+  "tableBtn": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "tableBtn",
+    "body": [
+      "{",
+      "   title:'$1',",
+      "   icon: ,",
+      "   tagAttr: ,",
+      "   btnClass: ,",
+      "   action: ,",
+      "}"
+    ],
+    "description": "createAction"
+  },
+  "createAction": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "createAction",
+    "body": ["createAction$1"],
+    "description": "createAction"
+  },
+  "createAction.normal()": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "createAction.",
+    "body": [
+      "createAction.normal({",
+      "   submit: {",
+      "      params:$1,",
+      "      service:",
+      "  }",
+      "})"
+    ],
+    "description": "createAction.normal()"
+  },
+  "createAction.confirm()": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "createAction.",
+    "body": [
+      "createAction.confirm({",
+      "   title: '$1',",
+      "   content: '',",
+      "   okText: '',",
+      "   cancelText: '',",
+      "   submit: {",
+      "      params:,",
+      "      service:",
+      "  }",
+      "})"
+    ],
+    "description": "createAction.confirm()"
+  },
+  "createAction.goOther()": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "createAction.",
+    "body": [
+      "createAction.goOther({",
+      "   url: '$1',",
+      "   params: (params) => {",
+      "   }",
+      "})"
+    ],
+    "description": "createAction.goOther()"
+  },
+  "createAction.modal()": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "createAction.",
+    "body": [
+      "createAction.modal({",
+      "   title: '$1',",
+      "   modelClass: '',",
+      "   fieldOptions: {},",
+      "   initModel: {},",
+      "   init: {",
+      "      params:,",
+      "      service:",
+      "   },",
+      "   submit: {",
+      "      params:,",
+      "      service:",
+      "  }",
+      "})"
+    ],
+    "description": "createAction.modal()"
+  },
+  "createAction.selfModal()": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "createAction.",
+    "body": [
+      "createAction.selfModal({",
+      "   modelClass: '$1',",
+      "   options: {",
+      "       selfModal: 'selfModal'",
+      "   },",
+      "   init: {",
+      "      params:,",
+      "      service:",
+      "   },",
+      "   submit: {",
+      "      params:,",
+      "      service:",
+      "  }",
+      "})"
+    ],
+    "description": "createAction.selfModal()"
+  },
+  "createAction.expand()": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "createAction.",
+    "body": ["createAction.expand({ type: 'expand' })"],
+    "description": "createAction.expand()"
+  }
+}
