@@ -91,21 +91,21 @@ export default {
       })
     }
   },
-  computed: {
-    getPageBtnModel: keys => {
-      let modelKeys = typeof keys == 'string' ? [keys] : keys
-      let model = {}
-      keys.forEach(key => {
-        model[key] = this[key]
-      })
-      return model
-    }
-  },
+  computed: {},
   created() {
     this._defaultTableSearch = _.cloneDeep(this.search.tableSearch)
     this.changeSearch()
   },
   methods: {
+    getPageBtnModel(keys) {
+      let modelKeys = typeof keys == 'string' ? [keys] : keys
+      let model = {}
+      let _this = this
+      modelKeys.forEach(key => {
+        model[key] = _this[key]
+      })
+      return model
+    },
     changeSearch({ tableSearch, filterSearch } = {}) {
       if (tableSearch) {
         this.search.tableSearch = tableSearch

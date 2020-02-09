@@ -2,6 +2,7 @@
   <el-dialog
     :title="action.title"
     :close-on-click-modal="false"
+    :custom-class="'dd-cc'"
     @close="close"
     :visible="visible"
     :destroy-on-close="true"
@@ -93,3 +94,8 @@ export default {
   }
 }
 </script>
+<style lang="less">
+.dd-cc {
+  width: 600px;
+}
+</style>

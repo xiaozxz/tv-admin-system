@@ -25,6 +25,7 @@
     "description": "快速书写vue"
   },
   "page": {
+    "scope": "javascript,typescript,vue",
     "prefix": "pageDetail",
     "body": [
       "<div class=\"page-header\">$1</div>",
@@ -33,6 +34,7 @@
     "description": "快速建立结构"
   },
   "tablePageOption": {
+    "scope": "javascript,typescript,vue",
     "prefix": "tablePageOption",
     "body": [
       "   {",
@@ -47,5 +49,11 @@
       "   },"
     ],
     "description": "table page data 基础字段"
+  },
+  "create": {
+    "scope": "javascript,typescript,vue",
+    "prefix": "create",
+    "body": ["create$1"],
+    "description": "create"
   }
 }

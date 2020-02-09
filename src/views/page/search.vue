@@ -3,10 +3,12 @@ import { createControl, createColumn, createAction } from 'tv-admin-ui'
 import { getData, updateService, list } from '@/util/testdata'
 import { NormalPageTable } from '@/util/mix'
 import ExpandTag from './component/ExpandTag'
+import SelfModal from './component/SelfModal'
 
 export default {
   name: 'search-page',
   mixins: [NormalPageTable],
+  components: { SelfModal },
   data() {
     let pageFilter = [
       {
@@ -34,9 +36,11 @@ export default {
         control: createControl.DatePicker()
       }
     ]
+
     let pageBtns = [
       {
-        title: '新增',
+        title: '批量删除',
+        modelKeys: ['selectRows'],
         action: createAction.modal({
           title: '新增数据',
           fieldOptions: updateFields,
@@ -47,9 +51,56 @@ export default {
       }
     ]
 
+    let tableBtns = [
+      {
+        title: '详情',
+        action: createAction.expand({ type: 'expand' })
+      },
+      {
+        title: '修改',
+        action: createAction.modal({
+          title: '修改数据',
+          fieldOptions: updateFields,
+          submit: {
+            service: updateService
+          }
+        })
+      },
+      {
+        title: '无提示启用',
+        action: createAction.normal({
+          submit: {
+            params: modal => {
+              modal.status = modal.status == 0 ? 1 : 0
+              return modal
+            },
+            successMsg: '操作成功',
+            service: updateService
+          }
+        })
+      },
+      {
+        title: '详情页面',
+        action: createAction.goOther({
+          url: 'pageDetail',
+          params: 'id'
+        })
+      },
+      {
+        title: '自定义弹出框',
+        action: createAction.selfModal({
+          options: {
+            selfModal: 'SelfModal'
+          },
+          submit: {
+            service: updateService
+          }
+        })
+      }
+    ]
+
     let tableColumns = [
-      createColumn.normal({ prop: '', label: '' }),
-      createColumn.normal({ type: 'index', label: '序号' }),
+      createColumn.normal({ type: 'index', label: '序号', width: 60 }),
       createColumn.normal({ prop: 'title', label: '标题' }),
       createColumn.normal({ prop: 'time', label: '时间' }),
       createColumn.btnlist({
@@ -80,18 +131,8 @@ export default {
       createColumn.btnlist({
         prop: 'opearte',
         label: '操作',
-        children: [
-          {
-            title: '修改',
-            action: createAction.modal({
-              title: '',
-              fieldOptions: updateFields,
-              submit: {
-                service: updateService
-              }
-            })
-          }
-        ]
+        btnNumber: 3,
+        children: tableBtns
       })
     ]
 
@@ -101,7 +142,10 @@ export default {
       pageFilter,
       tableColumns,
       selectRows: [],
-      tableExpandOption: {},
+      tableExpandOption: {
+        tag: ExpandTag
+      },
+      selfModalKeys: ['SelfModal'],
       getPageDataService: getData
     }
   }

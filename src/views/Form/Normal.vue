@@ -25,17 +25,17 @@ export default {
         props: 'name',
         label: '名称',
         rules: [{ required: true }],
-        control: createControl.createInput()
+        control: createControl.Input()
       },
       {
         props: 'desc',
         label: '描述',
-        control: createControl.createInput()
+        control: createControl.Input()
       },
       {
         props: 'select',
         label: '下拉框',
-        control: createControl.createSelect({
+        control: createControl.Select({
           controlOption: {
             options: [
               { label: '数据1', value: '这是值1' },
@@ -47,7 +47,7 @@ export default {
       {
         props: 'radio',
         label: '单选框',
-        control: createControl.createRadio({
+        control: createControl.Radio({
           controlOption: {
             options: [
               { label: '数据1', value: '这是值1' },
@@ -59,7 +59,7 @@ export default {
       {
         props: 'checkbox',
         label: '多选框',
-        control: createControl.createCheckbox({
+        control: createControl.Checkbox({
           controlOption: {
             options: [
               { label: '数据1', value: '这是值1' },
@@ -71,7 +71,7 @@ export default {
       {
         props: ['start', 'end'],
         label: '日期',
-        control: createControl.createDatePicker({
+        control: createControl.DatePicker({
           controlOption: { type: 'daterange' }
         })
       },
@@ -82,20 +82,18 @@ export default {
           {
             props: 'desc',
             label: '描述字段1',
-            control: createControl.createInput()
+            control: createControl.Input()
           },
           {
             props: 'number',
             label: '总数',
-            control: createControl.createNumber()
+            control: createControl.Number()
           }
         ]
       }
     ])
     return {
       mode: 'inline',
-      // eslint-disable-next-line vue/no-reserved-keys
-      _test: '1233',
       model: {},
       files
     }
