@@ -86,8 +86,8 @@ export default {
       if (this.isSubmit) {
         return false
       }
-      if (this.action && this.action.options) {
-        let key = this.action.options.selfModal
+      if (this.action && this.action.modalKey) {
+        let key = this.action.modalKey
         this.$emit('close', key)
       }
     }

@@ -8,24 +8,24 @@
   "createColumn.normal()": {
     "scope": "javascript, typescript, vue",
     "prefix": "createColumn.normal",
-    "body": ["createColumn.normal({ prop: '$1', label: ''}),"],
+    "body": ["createColumn.normal({ prop: '$1', label: '',align:'center' }),"],
     "description": "createColumn.normal()"
   },
   "createColumn.translate()": {
     "scope": "javascript, typescript, vue",
-    "prefix": "createColumn.",
+    "prefix": "createColumn.translate",
     "body": ["createColumn.translate({ prop: '$1', label: '', translate:{} }),"],
     "description": "createColumn.translate()"
   },
   "createColumn.btnlist()": {
     "scope": "javascript, typescript, vue",
-    "prefix": "createColumn.",
+    "prefix": "createColumn.btnlist",
     "body": ["createColumn.btnlist({ prop: '$1', label: '', children: [], btnNumber:,}),"],
     "description": "createColumn.btnlist()"
   },
   "createColumn.self()": {
     "scope": "javascript, typescript, vue",
-    "prefix": "createColumn.",
+    "prefix": "createColumn.self",
     "body": ["createColumn.self({ prop: '$1', label: '', selfTag:,}),"],
     "description": "createColumn.self()"
   },

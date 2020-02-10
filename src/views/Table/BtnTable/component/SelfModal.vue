@@ -9,7 +9,6 @@
     <template v-if="visible">
       <div>
         <h1>这是一个自定义弹出框</h1>
-        <div>{{ data }}</div>
       </div>
       <div slot="footer" class="dialog-footer">
         <el-button :loading="isSubmit" @click="close">取 消</el-button>
@@ -85,8 +84,8 @@ export default {
       if (this.isSubmit) {
         return false
       }
-      if (this.action && this.action.options) {
-        let key = this.action.options.selfModal
+      if (this.action && this.action.modalKey) {
+        let key = this.action.modalKey
         this.$emit('close', key)
       }
     }

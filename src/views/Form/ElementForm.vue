@@ -56,17 +56,17 @@ export default {
       {
         props: 'name',
         label: '名称',
-        control: createControl.createInput()
+        control: createControl.Input()
       },
       {
         props: 'desc',
         label: '描述',
-        control: createControl.createInput()
+        control: createControl.Input()
       },
       {
         props: ['start', 'end'],
         label: '日期',
-        control: createControl.createDatePicker({
+        control: createControl.DatePicker({
           controlOption: { type: 'daterange' }
         })
       }

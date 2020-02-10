@@ -1,11 +1,11 @@
 {
     "createControl": {
         "scope": "javascript, typescript, vue",
-        "prefix": "cc createControl",
+        "prefix": "createControl",
         "body": [
             "createControl"
         ],
-        "description": "formfieldOptions"
+        "description": "createControl"
     },
     ".Input()": {
         "scope": "javascript, typescript, vue",
@@ -119,24 +119,40 @@
         "scope": "javascript, typescript, vue",
         "prefix": "cc. createControl.",
         "body": [
-            "createControl.Self()",
+            "createControl.Self({selfControl:})",
         ],
         "description": "createControl.Self()"
     },
-    "formfieldOptions": {
+    ".Fields()": {
         "scope": "javascript, typescript, vue",
-        "prefix": "fo fieldOptions",
+        "prefix": "cc. createControl.",
+        "body": [
+            "createControl.Fields({list:[$1]})",
+        ],
+        "description": "createControl.Fields()"
+    },
+      ".FieldsDetail()": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "cc. createControl.",
+        "body": [
+            "createControl.Fields({,,list:[$1]})",
+        ],
+        "description": "createControl.FieldsDetail()"
+    },
+    "formfieldOption": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "fo fieldOption",
         "body": [
             "{",
             "    props: '',",
             "    label: '',",
             "    rules: [],",
-            "    control: {}",
+            "    control: createControl",
             "}",
         ],
-        "description": "formfieldOptions"
+        "description": "formfieldOption"
     },
-    "formfieldOptionsD": {
+    "formfieldOptionDetail": {
         "scope": "javascript, typescript, vue",
         "prefix": "fo fieldOptions",
         "body": [
@@ -153,6 +169,6 @@
             "       delOperate: ",
             "   }"
         ],
-        "description": "formfieldOptions detail code"
+        "description": "formfieldOptionDetail detail code"
     }
 }

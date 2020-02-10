@@ -1,17 +1,29 @@
 {
+  "pageBtn": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "pageBtn",
+    "body": ["{", "   title:'$1',","modelKeys:[]", "   action:createAction ,", "}"],
+    "description": "page btn 快捷配置"
+  },
   "tableBtn": {
     "scope": "javascript, typescript, vue",
     "prefix": "tableBtn",
+    "body": ["{", "   title:'$1',", "   action:createAction ,", "}"],
+    "description": "table btn 快捷配置"
+  },
+  "tableBtnDetail": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "tableBtnDetail",
     "body": [
       "{",
       "   title:'$1',",
       "   icon: ,",
       "   tagAttr: ,",
       "   btnClass: ,",
-      "   action: ,",
+      "   action:createAction ,",
       "}"
     ],
-    "description": "createAction"
+    "description": "table btn detail快捷配置"
   },
   "createAction": {
     "scope": "javascript, typescript, vue",
@@ -21,7 +33,7 @@
   },
   "createAction.normal()": {
     "scope": "javascript, typescript, vue",
-    "prefix": "createAction.",
+    "prefix": "createAction.normal",
     "body": [
       "createAction.normal({",
       "   submit: {",
@@ -34,24 +46,25 @@
   },
   "createAction.confirm()": {
     "scope": "javascript, typescript, vue",
-    "prefix": "createAction.",
+    "prefix": "createAction.confirm",
     "body": [
       "createAction.confirm({",
       "   title: '$1',",
-      "   content: '',",
-      "   okText: '',",
-      "   cancelText: '',",
+      "   confirm: {",
+      "      title: '提示',",
+      "      content: model =>'",
+      "   }",
       "   submit: {",
       "      params:,",
       "      service:",
-      "  }",
+      "   }",
       "})"
     ],
     "description": "createAction.confirm()"
   },
   "createAction.goOther()": {
     "scope": "javascript, typescript, vue",
-    "prefix": "createAction.",
+    "prefix": "createAction.goOther",
     "body": [
       "createAction.goOther({",
       "   url: '$1',",
@@ -63,13 +76,13 @@
   },
   "createAction.modal()": {
     "scope": "javascript, typescript, vue",
-    "prefix": "createAction.",
+    "prefix": "createAction.modal",
     "body": [
       "createAction.modal({",
       "   title: '$1',",
       "   modelClass: '',",
-      "   fieldOptions: {},",
-      "   initModel: {},",
+      "   fieldOptions: [],",
+      "   initModel: model=> model,",
       "   init: {",
       "      params:,",
       "      service:",
@@ -84,13 +97,14 @@
   },
   "createAction.selfModal()": {
     "scope": "javascript, typescript, vue",
-    "prefix": "createAction.",
+    "prefix": "createAction.selfModal",
     "body": [
       "createAction.selfModal({",
       "   modelClass: '$1',",
       "   options: {",
-      "       selfModal: 'selfModal'",
+      "       selfModal: ''",
       "   },",
+      "   initModel: model=> model,",
       "   init: {",
       "      params:,",
       "      service:",

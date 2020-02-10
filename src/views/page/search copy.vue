@@ -2,9 +2,11 @@
 import { createControl, createColumn, createAction } from 'tv-admin-ui'
 import { getData, updateService, list } from '@/util/testdata'
 import { NormalPageTable } from '@/util/mix'
+import ExpandTag from './component/ExpandTag'
 import SelfModal from './component/SelfModal'
+
 export default {
-  name: '',
+  name: 'search-page',
   mixins: [NormalPageTable],
   components: { SelfModal },
   data() {
@@ -15,30 +17,35 @@ export default {
         control: createControl.Input()
       },
       {
-        props: ['start', 'end'],
-        label: '时间范围',
+        props: 'time',
+        label: '时间',
         control: createControl.DatePicker({
           controlOption: { type: 'daterange' }
         })
       }
     ]
 
+    let updateFields = [
+      {
+        props: 'title',
+        label: '标题',
+        control: createControl.Input()
+      },
+      {
+        props: 'time',
+        label: '时间',
+        control: createControl.DatePicker()
+      }
+    ]
+
     let pageBtns = [
       {
-        title: '批量修改',
+        title: '批量删除',
         modelKeys: ['selectRows'],
-        action: createAction.confirm({
-          confirm: {
-            title: '温馨提示',
-            content: model =>
-              `您确定要删除选中${model.selectRows.length}条数据，删除后无法恢复！`
-          },
+        action: createAction.modal({
+          title: '新增数据',
+          fieldOptions: updateFields,
           submit: {
-            params: model => {
-              let ids = model.selectRows.map(row => row.id)
-              debugger
-              return ids
-            },
             service: updateService
           }
         })
@@ -47,51 +54,45 @@ export default {
 
     let tableBtns = [
       {
+        title: '详情',
+        action: createAction.expand({ type: 'expand' })
+      },
+      {
         title: '修改',
         action: createAction.modal({
           title: '修改数据',
-
-          fieldOptions: [
-            {
-              props: 'title',
-              label: '标题',
-              rules: [{ required: true }, { vType: 'specialChar' }],
-              control: createControl.Input()
-            }
-          ],
+          fieldOptions: updateFields,
           submit: {
             service: updateService
           }
         })
       },
       {
-        title: model => (model.status == 0 ? '启用' : '禁用'),
-        action: createAction.confirm({
-          confirm: {
-            content: model =>
-              `您确定要${model.status == 0 ? '启用' : '禁用'}该数据`
-          },
+        title: '无提示启用',
+        action: createAction.normal({
           submit: {
-            params: model => {
-              let newModel = { ...model }
-              model.status = model.status == 0 ? 1 : 0
-              return model
+            params: modal => {
+              modal.status = modal.status == 0 ? 1 : 0
+              return modal
             },
+            successMsg: '操作成功',
             service: updateService
           }
         })
       },
       {
-        title: '去普通列表',
+        title: '详情页面',
         action: createAction.goOther({
-          url: '/table/normal'
+          url: 'pageDetail',
+          params: 'id'
         })
       },
       {
-        title: '自定义modal',
+        title: '自定义弹出框',
         action: createAction.selfModal({
-          title: '标题',
-          modalKey: 'SelfModal',
+          options: {
+            selfModal: 'SelfModal'
+          },
           submit: {
             service: updateService
           }
@@ -100,13 +101,8 @@ export default {
     ]
 
     let tableColumns = [
-      createColumn.normal({
-        type: 'index',
-        label: '序号',
-        width: 60,
-        align: 'center'
-      }),
-      createColumn.normal({ prop: 'title', label: '标题', align: 'center' }),
+      createColumn.normal({ type: 'index', label: '序号', width: 60 }),
+      createColumn.normal({ prop: 'title', label: '标题' }),
       createColumn.normal({ prop: 'time', label: '时间' }),
       createColumn.btnlist({
         prop: 'status',
@@ -114,13 +110,18 @@ export default {
         children: [
           {
             icon: model =>
-              model.status == 0 ? 'el-icon-plus' : 'el-icon-minus',
-            action: createAction.normal({
+              model.status == 0 ? 'el-icon-star-off' : 'el-icon-star-on',
+            action: Object.freeze({
+              type: 'confirm',
+              confirm: {
+                title: '提示',
+                content: model =>
+                  `您是否要${model.status == 0 ? '启用' : '禁用'}该数据`
+              },
               submit: {
-                params: model => {
-                  let newModel = { ...model }
-                  model.status = model.status == 0 ? 1 : 0
-                  return model
+                params: modal => {
+                  modal.status = modal.status == 0 ? 1 : 0
+                  return modal
                 },
                 service: updateService
               }
@@ -129,19 +130,22 @@ export default {
         ]
       }),
       createColumn.btnlist({
-        prop: 'op',
+        prop: 'opearte',
         label: '操作',
         btnNumber: 3,
         children: tableBtns
       })
     ]
+
     return {
-      pageTitle: '检索页面',
+      pageTitle: '',
       pageBtns,
       pageFilter,
       tableColumns,
       selectRows: [],
-      tableExpandOption: {},
+      tableExpandOption: {
+        tag: ExpandTag
+      },
       selfModalKeys: ['SelfModal'],
       getPageDataService: getData
     }

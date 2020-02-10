@@ -1,0 +1,49 @@
+{
+  "vRequired": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "vRequired",
+    "body": ["{ required:true }, "],
+    "description": "vRequired 快捷配置"
+  },
+  "vNumber": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "vNumber",
+    "body": ["{ vType:'number' }, "],
+    "description": "vNumber 快捷配置"
+  },
+  "vSpecialChar": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "vspecialChar",
+    "body": ["{ vType:'specialChar' }, "],
+    "description": "vSpecialChar 快捷配置"
+  },
+  "vPassword": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "vpassword",
+    "body": ["{ vType:'password' }, "],
+    "description": "vpassword 快捷配置"
+  },
+  "vphone": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "vphone",
+    "body": ["{ vType:'phone' }, "],
+    "description": "vphone 快捷配置"
+  },
+  "vemail": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "vemail",
+    "body": ["{ vType:'email' }, "],
+    "description": "vemail 快捷配置"
+  }
+  
+  // 'email',
+  // 'integer',
+  // 'numberMax',
+  // 'numberMin',
+  // 'nonSpecial',
+  // 'alphanum',
+  // 'money',
+  // 'twoDecimals',
+  // 'noSpace',
+ 
+}

@@ -166,7 +166,6 @@ export default {
     },
 
     changeModal({ visible, model, action, modalKey }) {
-      debugger
       this.$set(this.modal, modalKey, {
         visible,
         model,

@@ -9,7 +9,6 @@
         "description": "TvForm"
     },
     "tvform":{
-        "scope": "javascript, typescript, vue",
         "prefix": "tv-form",
         "body": [
             "<tv-form",

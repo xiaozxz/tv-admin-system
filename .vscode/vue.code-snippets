@@ -24,8 +24,7 @@
     ],
     "description": "快速书写vue"
   },
-  "page": {
-    "scope": "javascript,typescript,vue",
+  "pageDetail": {
     "prefix": "pageDetail",
     "body": [
       "<div class=\"page-header\">$1</div>",
