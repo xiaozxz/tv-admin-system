@@ -1,0 +1,11 @@
+{
+  // 普通页面详情
+  "pageDetail": {
+    "prefix": "pageDetail",
+    "body": [
+      "<div class=\"page-header\">$1</div>",
+      "<div class=\"page-content\"></div>"
+    ],
+    "description": "快速建立结构"
+  },
+}

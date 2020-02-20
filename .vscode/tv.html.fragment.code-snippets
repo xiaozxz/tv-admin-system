@@ -1,0 +1,106 @@
+{
+  /***TvTable***/
+  "tvTable": {
+    "prefix": "tv-table",
+    "body": [
+      "<tv-table",
+      "   :loading=''",
+      "   :columns=''",
+      "   :data=''",
+      "   :pageInfo=''",
+      "   :pageOption=''",
+      "   :tableSearch=''",
+      "   @changePopup=''",
+      "   @changeTableSearch=''",
+      "   @changeModal=''",
+      "   @changeLoading=''",
+      "   @submitCancelDo=''",
+      "></tv-table>"
+    ],
+    "description": "tv-table"
+  },
+  "tvTableBtn": {
+    "prefix": "tvTableBtn",
+    "body": [
+      "<tv-table-btn",
+      "   :is=''",
+      "   :loading=''",
+      "   :nodeInfo=''",
+      "   :model=''",
+      "   @changePopup=''",
+      "   @submitCancelDo=''",
+      "   @changeLoading=''",
+      "></tv-table-btn>"
+    ],
+    "description": "tv-table-btn"
+  },
+  /***tvform***/
+  "tvform": {
+    "prefix": "tv-form",
+    "body": [
+      "<tv-form",
+      "    ref='form'",
+      "    :formClass=''",
+      "    :model.sync=''",
+      "    @formSubmit=''",
+      "    :fieldOptions=''",
+      "    :mode=''",
+      "></tv-form>"
+    ],
+    "description": "tv-form"
+  },
+  "tvformitem": {
+    "prefix": "tv-form-item",
+    "body": [
+      "<tv-form-item",
+      "   :props=''",
+      "   :label=''",
+      "   :control=''",
+      "></tv-form-item>"
+    ],
+    "description": "tv-form-item"
+  },
+  "tvformitems": {
+    "prefix": "tv-form-items",
+    "body": ["<tv-form-items :fieldOptions=''></tv-form-items>"],
+    "description": "tv-form-items"
+  },
+  "tvfilterform": {
+    "prefix": "tv-filter-form",
+    "body": [
+      "<tv-filter-form",
+      "    :filter=''",
+      "    :loading=''",
+      "    :fieldOptions=''",
+      "></tv-filter-form>"
+    ],
+    "description": "tvfilterform"
+  },
+  /***end***/
+  /***model***/
+  "tvformmodal": {
+    "prefix": "tv-form-modal",
+    "body": [
+      "<tv-form-modal",
+      "   v-bind=''",
+      "   :submintloading=''",
+      "   @close=''",
+      "   @submitCancelDo=''",
+      "></tv-form-modal>"
+    ],
+    "description": "tv-form-modal"
+  },
+  "selfmodal": {
+    "prefix": "self-modal",
+    "body": [
+      "<self-modal",
+      "   v-bind=''",
+      "   :submintloading=''",
+      "   @close=''",
+      "   @submitCancelDo=''",
+      "></self-modal>"
+    ],
+    "description": "self-modal"
+  }
+  /***end***/
+}

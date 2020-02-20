@@ -1,0 +1,50 @@
+{
+  /****vue data部分****/
+  "vueExtend": {
+    "scope": "javascript,typescript,vue",
+    "prefix": "vueExtend",
+    "body": [
+      "   components: {},",
+      "   mixins: [],",
+      "   provide() {",
+      "    return {}",
+      "   }",
+      "   inject:[],"
+    ],
+    "description": "vue 补充属性"
+  },
+  "lifeHook": {
+    "scope": "javascript,typescript,vue",
+    "prefix": "lifeHook",
+    "body": [
+      "  beforeCreate() {},",
+      "  created() {},",
+      "  beforeMount() {},",
+      "  mounted() {},",
+      "  beforeDestroy() {},",
+      "  destroyed() {},"
+    ],
+      "description": "vue 生命周期"
+  },
+  /****end****/
+  /****自定义page部分*****/
+  // table page 的基础字段
+  "tablePageData": {
+    "scope": "javascript,typescript,vue",
+    "prefix": "tablePageData",
+    "body": [
+      "   {",
+      "      pageTitle: '$1',",
+      "      pageBtns,",
+      "      pageFilter,",
+      "      tableColumns,",
+      "      clearSelect,",
+      "      selectRows:[],",
+      "      tableExpandOption:{},",
+      "      getPageDataService:,",
+      "   },"
+    ],
+    "description": "table page data 基础字段"
+  }
+  /****end****/
+}

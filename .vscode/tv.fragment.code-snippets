@@ -1,4 +1,91 @@
 {
+  "create": {
+    "scope": "javascript,typescript,vue",
+    "prefix": "create",
+    "body": ["create$1"],
+    "description": "create"
+  },
+  /****component******/
+  "TvTable": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "TvTable",
+    "body": ["TvTable"],
+    "description": "TvTable"
+  },
+  "TvTableBtn": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "TvTableBtn",
+    "body": ["TvTableBtn"],
+    "description": "TvTableBtn"
+  },
+  "TvFormModal": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "TvFormModal",
+    "body": ["TvFormModal"],
+    "description": "TvFormModal"
+  },
+  "TvForm": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "TvForm",
+    "body": ["TvForm"],
+    "description": "TvForm"
+  },
+  "TvFilterForm": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "TvFilterForm",
+    "body": ["TvFilterForm"],
+    "description": "TvFilterForm"
+  },
+  "TvFormItem": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "TvFormItem",
+    "body": ["TvFormItem"],
+    "description": "TvFormItem"
+  },
+  "TvFormItems": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "TvFormItems",
+    "body": ["TvFormItems"],
+    "description": "TvFormItemts"
+  },
+  /****end******/
+  /****createColumn******/
+  "createColumn": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "createColumn",
+    "body": ["createColumn"],
+    "description": "createColumn"
+  },
+  "createColumn.normal()": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "createColumn.normal",
+    "body": ["createColumn.normal({ prop: '$1', label: '',align:'center' }),"],
+    "description": "createColumn.normal()"
+  },
+  "createColumn.translate()": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "createColumn.translate",
+    "body": [
+      "createColumn.translate({ prop: '$1', label: '', translate:{} }),"
+    ],
+    "description": "createColumn.translate()"
+  },
+  "createColumn.btnlist()": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "createColumn.btnlist",
+    "body": [
+      "createColumn.btnlist({ prop: '$1', label: '', children: [], btnNumber:,}),"
+    ],
+    "description": "createColumn.btnlist()"
+  },
+  "createColumn.self()": {
+    "scope": "javascript, typescript, vue",
+    "prefix": "createColumn.self",
+    "body": ["createColumn.self({ prop: '$1', label: '', selfTag:,}),"],
+    "description": "createColumn.self()"
+  },
+  /****end******/
+
   /****form******/
   "formFieldOption": {
     "scope": "javascript, typescript, vue",

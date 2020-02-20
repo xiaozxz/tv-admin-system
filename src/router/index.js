@@ -33,33 +33,23 @@ const routes = [
     path: '/page/normal',
     name: 'PageNormal',
     component: () => import('../views/page/search.vue')
+  },
+  {
+    path: '/Test',
+    name: 'PageTest',
+    component: () => import('../views/Test')
   }
-  // {
-  //   path: '/form',
-  //   name: 'form',
-  //   children: [
-  //     {
-  //       path: '/form/normal',
-  //       name: 'NoralForm',
-  //       component: () => import('../views/Form/index.vue')
-  //     }
-  //   ]
-  // },
-  // {
-  //   path: '/table',
-  //   name: 'table',
-  //   children: [
-  //     {
-  //       path: '/table/normal',
-  //       name: 'NoralTable',
-  //       component: () => import('../views/Table/index.vue')
-  //     }
-  //   ]
-  // }
 ]
 
-const router = new VueRouter({
-  routes
-})
+// const router = new VueRouter({
+//   routes
+// })
 
-export default router
+export function getRoute() {
+  const router = new VueRouter({
+    routes
+  })
+  return router
+}
+
+// export default router
