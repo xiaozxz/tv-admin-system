@@ -50,7 +50,6 @@ export default {
         title: '修改',
         action: createAction.modal({
           title: '修改数据',
-
           fieldOptions: [
             {
               props: 'title',
@@ -106,15 +105,23 @@ export default {
         width: 60,
         align: 'center'
       }),
-      createColumn.normal({ prop: 'title', label: '标题', align: 'center' }),
+      createColumn.normal({
+        prop: 'title',
+        label: '标题',
+        align: 'center'
+      }),
       createColumn.normal({ prop: 'time', label: '时间' }),
       createColumn.btnlist({
         prop: 'status',
         label: '状态',
+        width: 80,
+        align: 'center',
         children: [
           {
             icon: model =>
-              model.status == 0 ? 'el-icon-plus' : 'el-icon-minus',
+              model.status == 0
+                ? 'el-icon-switch-button'
+                : 'el-icon-video-pause',
             action: createAction.normal({
               submit: {
                 params: model => {

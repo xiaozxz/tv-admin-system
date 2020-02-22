@@ -8,12 +8,12 @@ import store from './store'
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 
-setTimeout(function() {
-  let router = getRoute()
+// setTimeout(function() {
+let router = getRoute()
 
-  new Vue({
-    router,
-    store,
-    render: h => h(App)
-  }).$mount('#app')
-}, 500)
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
+// }, 500)

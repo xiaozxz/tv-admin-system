@@ -1,49 +1,122 @@
 {
-  "vRequired": {
-    "scope": "javascript, typescript, vue",
-    "prefix": "vRequired",
-    "body": ["{ required:true }, "],
-    "description": "vRequired 快捷配置"
-  },
-  "vNumber": {
-    "scope": "javascript, typescript, vue",
-    "prefix": "vNumber",
-    "body": ["{ vType:'number' }, "],
-    "description": "vNumber 快捷配置"
-  },
-  "vSpecialChar": {
-    "scope": "javascript, typescript, vue",
-    "prefix": "vspecialChar",
-    "body": ["{ vType:'specialChar' }, "],
-    "description": "vSpecialChar 快捷配置"
-  },
-  "vPassword": {
-    "scope": "javascript, typescript, vue",
-    "prefix": "vpassword",
-    "body": ["{ vType:'password' }, "],
-    "description": "vpassword 快捷配置"
-  },
-  "vphone": {
-    "scope": "javascript, typescript, vue",
-    "prefix": "vphone",
-    "body": ["{ vType:'phone' }, "],
-    "description": "vphone 快捷配置"
-  },
-  "vemail": {
-    "scope": "javascript, typescript, vue",
-    "prefix": "vemail",
-    "body": ["{ vType:'email' }, "],
-    "description": "vemail 快捷配置"
-  }
-  
-  // 'email',
-  // 'integer',
-  // 'numberMax',
-  // 'numberMin',
-  // 'nonSpecial',
-  // 'alphanum',
-  // 'money',
-  // 'twoDecimals',
-  // 'noSpace',
- 
+    "vAlphanum": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vAlphanum",
+        "body": [
+            "{ vType:'alphanum' }, "
+        ],
+        "description": "vAlphanum 快捷配置"
+    },
+    "vEmail": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vEmail",
+        "body": [
+            "{ vType:'email' }, "
+        ],
+        "description": "vEmail 快捷配置"
+    },
+    "vInteger": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vInteger",
+        "body": [
+            "{ vType:'integer' }, "
+        ],
+        "description": "vInteger 快捷配置"
+    },
+    "vMoney": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vMoney",
+        "body": [
+            "{ vType:'money' }, "
+        ],
+        "description": "vMoney 快捷配置"
+    },
+    "vNumber": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vNumber",
+        "body": [
+            "{ vType:'number' }, "
+        ],
+        "description": "vNumber 快捷配置"
+    },
+    "vNumberMax": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vNumberMax",
+        "body": [
+            "{ vType:'numberMax',otherParams:$1 }, "
+        ],
+        "description": "vNumberMax 快捷配置"
+    },
+      "vRange": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vRange",
+        "body": [
+            "{ vType:'range',min:$1,max:$2 }, "
+        ],
+        "description": "vRange 数字区间验证 快捷配置"
+    },
+    "vNumberMin": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vNumberMin",
+        "body": [
+            "{ vType:'numberMin',otherParams:$1 }, "
+        ],
+        "description": "数字 快捷配置"
+    },
+    "vNonSpecial": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vNonSpecial",
+        "body": [
+            "{ vType:'nonSpecial' }, "
+        ],
+        "description": "验证是否只包含字母、数字，汉字 快捷配置"
+    },
+    "vNoSpace": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vNoSpace",
+        "body": [
+            "{ vType:'noSpace' }, "
+        ],
+        "description": "验证是否存在空格 快捷配置"
+    },
+    "vPassword": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vPassword",
+        "body": [
+            "{ vType:'password' }, "
+        ],
+        "description": "验证秘密 快捷配置"
+    },
+    "vPhone": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vPhone",
+        "body": [
+            "{ vType:'phone' }, "
+        ],
+        "description": "验证收集格式 快捷配置"
+    },
+    "vRequired": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vRequired",
+        "body": [
+            "{ required:true }, "
+        ],
+        "description": "验证是否必填 快捷配置"
+    },
+    "vSpecialChar": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vSpecialChar",
+        "body": [
+            "{ vType:'specialChar' }, "
+        ],
+        "description": "验证字符穿是否含有特殊字符 快捷配置"
+    },
+    "vTwoDecimals": {
+        "scope": "javascript, typescript, vue",
+        "prefix": "vTwoDecimals",
+        "body": [
+            "{ vType:'twoDecimals' }, "
+        ],
+        "description": "验证只能为两个字符 快捷配置"
+    }
 }

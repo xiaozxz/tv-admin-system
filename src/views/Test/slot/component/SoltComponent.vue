@@ -3,7 +3,6 @@
     <slot name="header">
       <header>这是标题</header>
     </slot>
-
     <div class="content">
       <slot :number="number" :addNumber="addNumber"></slot>
     </div>

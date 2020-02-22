@@ -35,21 +35,36 @@ const routes = [
     component: () => import('../views/page/search.vue')
   },
   {
-    path: '/Test',
-    name: 'PageTest',
-    component: () => import('../views/Test')
+    path: '/page/detail',
+    name: 'PageDetail',
+    component: () => import('../views/page/detail.vue')
+  },
+  {
+    path: '/Test/slot',
+    name: 'PageTestSlot',
+    component: () => import('../views/Test/slot')
+  },
+  {
+    path: '/Test/router/twoview',
+    name: 'PageTestSlot',
+    components: {
+      left: () => import('../views/Test/slot'),
+      main: () => import('../views/Test/slot')
+    }
   }
 ]
 
 // const router = new VueRouter({
 //   routes
 // })
-
+let a = 12
 export function getRoute() {
+  a = 13
   const router = new VueRouter({
     routes
   })
   return router
 }
+export const b = a
 
 // export default router

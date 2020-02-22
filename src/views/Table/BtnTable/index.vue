@@ -2,6 +2,7 @@
 import { createControl, createColumn, createAction } from 'tv-admin-ui'
 import { getData, updateService, list } from '@/util/testdata'
 import { NormalPageTable } from '@/util/mix'
+import ExpandTag from './component/ExpandTag'
 import SelfModal from './component/SelfModal'
 export default {
   name: '',
@@ -10,10 +11,13 @@ export default {
   data() {
     let tableBtns = [
       {
+        title: '展开',
+        action: createAction.expand({ type: 'expand' })
+      },
+      {
         title: '修改',
         action: createAction.modal({
           title: '修改数据',
-
           fieldOptions: [
             {
               props: 'title',
@@ -73,10 +77,14 @@ export default {
       createColumn.btnlist({
         prop: 'status',
         label: '状态',
+        width: 80,
+        align: 'center',
         children: [
           {
             icon: model =>
-              model.status == 0 ? 'el-icon-plus' : 'el-icon-minus',
+              model.status == 0
+                ? 'el-icon-switch-button'
+                : 'el-icon-video-pause',
             action: createAction.normal({
               submit: {
                 params: model => {
@@ -98,10 +106,12 @@ export default {
       })
     ]
     return {
-      pageTitle: '',
+      pageTitle: '普通列表',
       tableColumns,
       selectRows: [{ id: 20 }],
-      tableExpandOption: {},
+      tableExpandOption: {
+        tag: ExpandTag
+      },
       selfModalKeys: ['SelfModal'],
       getPageDataService: getData
     }

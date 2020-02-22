@@ -12,7 +12,7 @@
 <script>
 import SoltComponent from './component/SoltComponent'
 import Number from './component/NumberComponent'
-import { getSource } from '../../api/ajaxToken'
+// import { getSource } from '../../api/ajaxToken'
 export default {
   name: 'slotTest',
   components: { SoltComponent, Number },
@@ -20,7 +20,7 @@ export default {
     return {}
   },
   mounted() {
-    console.info(getSource('tt'))
+    //  console.info(getSource('tt'))
   },
   methods: {}
 }
