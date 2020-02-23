@@ -2,7 +2,9 @@
 import { createControl, createColumn, createAction } from 'tv-admin-ui'
 import { getData, updateService, list } from '@/util/testdata'
 import { NormalPageTable } from '@/util/mix'
+import ExpandTag from './component/ExpandTag'
 import SelfModal from './component/SelfModal'
+import SelfColumn from './component/SelfColumn'
 export default {
   name: '',
   mixins: [NormalPageTable],
@@ -15,8 +17,23 @@ export default {
         control: createControl.Input()
       },
       {
+        props: 'title1',
+        label: '标题1',
+        control: createControl.Input()
+      },
+      {
+        props: 'title2',
+        label: '标题2',
+        control: createControl.Input()
+      },
+      {
+        props: 'title3',
+        label: '标题3',
+        control: createControl.Input()
+      },
+      {
         props: ['start', 'end'],
-        label: '时间范围',
+        label: '时间范围4',
         control: createControl.DatePicker({
           controlOption: { type: 'daterange' }
         })
@@ -46,6 +63,10 @@ export default {
     ]
 
     let tableBtns = [
+      {
+        title: (model, supple) => (supple.tableExpand ? '收起' : '展开'),
+        action: createAction.expand({ type: 'expand' })
+      },
       {
         title: '修改',
         action: createAction.modal({
@@ -105,10 +126,10 @@ export default {
         width: 60,
         align: 'center'
       }),
-      createColumn.normal({
+      createColumn.self({
         prop: 'title',
         label: '标题',
-        align: 'center'
+        selfTag: SelfColumn
       }),
       createColumn.normal({ prop: 'time', label: '时间' }),
       createColumn.btnlist({
@@ -148,7 +169,9 @@ export default {
       pageFilter,
       tableColumns,
       selectRows: [],
-      tableExpandOption: {},
+      tableExpandOption: {
+        tag: ExpandTag
+      },
       selfModalKeys: ['SelfModal'],
       getPageDataService: getData
     }

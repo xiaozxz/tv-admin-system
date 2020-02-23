@@ -3,6 +3,7 @@
     <slot name="header">
       <header>这是标题</header>
     </slot>
+    <div>{{ $slots.header == null }}</div>
     <div class="content">
       <slot :number="number" :addNumber="addNumber"></slot>
     </div>
@@ -15,6 +16,9 @@ export default {
     return {
       number: 0
     }
+  },
+  mounted() {
+    debugger
   },
   methods: {
     addNumber() {

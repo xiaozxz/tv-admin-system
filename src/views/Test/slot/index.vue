@@ -2,7 +2,6 @@
   <div class="page test-page">
     <SoltComponent>
       <div slot="header">test</div>
-
       <template v-slot="props">
         <Number :number="props.number" @add="props.addNumber"></Number>
       </template>

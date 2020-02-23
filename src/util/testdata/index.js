@@ -5,6 +5,7 @@ function initData() {
     let data = {
       id: i,
       title: '标题' + i,
+      subTitle: '小标题' + i,
       time: '2019-01-' + (i > 9 ? '' : '0') + i,
       status: 0
     }
@@ -56,16 +57,16 @@ export function getData(params) {
 }
 
 export function updateService(model) {
-  let index = defaultData.findIndex(item => item.id == model.id)
-  if (index > -1) {
-    let item = defaultData[index]
-    for (var key in model) {
-      item[key] = model[key]
-    }
-  } else {
-    defaultData.unshift(defaultData)
-  }
   return new Promise((resolve, reject) => {
+    let index = defaultData.findIndex(item => item.id == model.id)
+    if (index > -1) {
+      let item = defaultData[index]
+      for (var key in model) {
+        item[key] = model[key]
+      }
+    } else {
+      defaultData.unshift(defaultData)
+    }
     setTimeout(() => {
       resolve({
         content: true

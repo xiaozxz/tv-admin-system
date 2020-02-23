@@ -61,7 +61,12 @@
 </template>
 
 <script>
-import { TvFilterForm, TvTable, TvFormModal, TvTableBtn } from 'tv-admin-ui'
+import {
+  TvFilterForm,
+  TvTable,
+  TvFormModal,
+  TvTableBtn
+} from 'tv-admin-ui/components'
 import { handleSearchParams, handlePageDataRes } from './method'
 import _ from 'lodash'
 export default {

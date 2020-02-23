@@ -6,6 +6,7 @@ import { getRoute } from './router'
 import store from './store'
 
 Vue.config.productionTip = false
+Vue.config.performance = true
 Vue.use(ElementUI)
 
 // setTimeout(function() {
